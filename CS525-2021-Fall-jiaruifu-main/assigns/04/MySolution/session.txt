@@ -1,0 +1,26 @@
+For ATS implementation of isprime:
+
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o assign04_sol -DATS_MEMALLOC_LIBC assign04_sol.dats
+[jiaruifu@csa2 MySolution]$ ./assign04_sol 
+printing type check of TMisprime, expecting int->bool: T0Pfun(T0Pbas(int); T0Pbas(bool))
+
+[jiaruifu@csa2 MySolution]$ 
+
+
+For C, boxed data representation implementation of isprime:
+
+[jiaruifu@csa2 MySolution]$ gcc -Wall isprime.c -o isprime
+isprime.c: In function ‘LAMVAL_print’:
+isprime.c:23:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+[jiaruifu@csa2 MySolution]$ ./isprime 
+1 for true, 0 for false
+Is 2 a prime: 1
+Is 3 a prime: 1
+Is 10 a prime: 0
+Is 21 a prime: 0
+Is 19 a prime: 1
+[jiaruifu@csa2 MySolution]$ 

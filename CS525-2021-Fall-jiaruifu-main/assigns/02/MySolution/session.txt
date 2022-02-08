@@ -1,0 +1,17 @@
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o lambda0_sol -DATS_MEMALLOC_LIBC lambda0_sol.dats
+[jiaruifu@csa2 MySolution]$ ./lambda0_sol
+T0Mtup(T0Mint(0), T0Mint(1), T0Mint(2), T0Mint(3), T0Mint(4), )printing tuple of 0-4
+T0Msel(T0Mtup(T0Mint(0), T0Mint(1), T0Mint(2), T0Mint(3), T0Mint(4), ); T0Mint(3))testing print_term0 on sel
+T0Msel(T0Mtup(T0Mint(0), T0Mint(1), T0Mint(2), T0Mint(3), T0Mint(4), ); T0Mint(4))testing print_term0 on sel
+T0Msel(T0Mtup(T0Mint(0), T0Mint(1), T0Mint(2), T0Mint(3), T0Mint(4), ); T0Mint(5))testing print_term0 on sel
+T0Vint(3)
+testing print_tval0 & eval0 on sel expected output above is 3
+T0Vint(4)
+expected output above is 4
+T0Vint(12)
+testing eval1, expected output above is T0Vint(12)
+term0_factorial(10) = T0Vint(3628800)
+
+[jiaruifu@csa2 MySolution]$ 

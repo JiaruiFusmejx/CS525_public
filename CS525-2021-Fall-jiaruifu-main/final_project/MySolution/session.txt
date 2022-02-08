@@ -1,0 +1,49 @@
+for compiler_sol.dats
+
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o compiler_sol \
+-DATS_MEMALLOC_LIBC ./../lambda1.dats compiler_sol.dats
+[jiaruifu@csa2 MySolution]$ ./compiler_sol 
+t1emp: T1Memp() T2emp after trans12: T2Memp()
+t1lam: T1Mlam(test2; T1Memp()) T2lam after trans12: T2Mlam(test2[1]; T2Memp())
+t1let: T1Mlet(test3; T1Memp(); T1Mlam(test2; T1Memp())) T2let after trans12: T2Mlet(test3[2]; T2Memp(); T2Mlam(test2[3]; T2Memp()))
+t1cons: T1Mcons(T1Memp(); T1Memp()) T2cons after trans12: T2Mcons(T2Memp(); T2Memp())
+t1refn: TMref_new(T1Mint(3)) T2refn after trans12: TMref_new(T2Mint(3))
+t1fix: T1Mfix(f; x; T1Mlam(test2; T1Memp())) T2fix after trans12: T2Mfix(f[4]; x[5]; T2Mlam(test2[6]; T2Memp()))
+t1int(4): T1Mint(4) T2int after trans12 & interp: T2Vint(4)
+
+LAMVAL_emp()
+LAMOPR_add(LAMVAL_int(2), LAMVAL_int(3))
+LAMOPR_sub(LAMVAL_int(25), LAMVAL_int(4))
+lamval fun(lamval test2){  return LAMVAL_str('returned something'); }
+lamval fun(lamval test2){  return LAMVAL_emp(); }
+LAMVAL_con(LAMVAL_emp(), LAMVAL_emp() )
+lamval fix_recur(lamval x){LAMVAL_emp()}
+LAMVAL_tup(LAMVAL_int(4), LAMVAL_emp() )
+LAMOPR_fst(LAMVAL_tup(LAMVAL_int(4), LAMVAL_emp() ))
+if((lamval_btf)LAMOPR_igt(LAMVAL_int(2), LAMVAL_int(3)))->data){LAMVAL_str('first is greater') }else{ LAMVAL_str('second is greater') }
+
+
+
+for testing_ground.c
+
+[jiaruifu@csa2 MySolution]$ gcc testing_ground.c 
+[jiaruifu@csa2 MySolution]$ ./a.out 
+Test:true
+Test2:true
+Test3:empty
+Test4:Tuple: ( yada; true )
+Test5:Testing compiled code from compiler 1:
+5
+Testing compiled code from compiler 2:
+21
+Testing compiled code from compiler 3:
+returned something
+Testing compiled code from compiler 4:
+Cons: ( empty; empty )
+Testing compiled code from compiler 5:
+Tuple: ( 4; empty )
+Testing compiled code from compiler 6:
+4
+Testing compiled code from compiler 7:

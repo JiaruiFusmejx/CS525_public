@@ -1,0 +1,13 @@
+[jiaruifu@csa2 MySolution]$ make
+make: 'assign05_sol' is up to date.
+[jiaruifu@csa2 MySolution]$ ./assign05_sol
+Piazza example, T0Mlameasy: T0Mlam(n; none(); T0Mint(1))
+Piazza example, term_infer0 of T0Mlameasy: T0Pfun(T0Pext(...); T0Pbas(int))
+
+Simple lam, ige_2: T0Mlam(x; none(); T0Mifb(T0Mopr(>=; T0Mvar(x)->T0Mint(2)); T0Mbtf(true); T0Mbtf(false)))
+Simple lam, term_infer0 of ige_2: T0Pfun(T0Pbas(int); T0Pbas(bool))
+
+Factorial fix, factorial: T0Mfix(f; none(); T0Mlam(i; some(T0Pbas(int)); T0Mifb(T0Mopr(>; T0Mvar(i)->T0Mint(0)); T0Mopr(*; T0Mvar(i)->T0Mapp(T0Mvar(f); T0Mopr(-; T0Mvar(i)->T0Mint(1)))); T0Mint(1))))
+Factorial fix, term_infer0 of factorial: T0Pfun(T0Pbas(int); T0Pbas(int))
+
+[jiaruifu@csa2 MySolution]$ 

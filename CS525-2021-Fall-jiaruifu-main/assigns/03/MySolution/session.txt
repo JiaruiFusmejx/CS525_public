@@ -1,0 +1,18 @@
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o assign03_sol -DATS_MEMALLOC_LIBC assign03_sol.dats
+[jiaruifu@csa2 MySolution]$ ./assign03_sol 
+testing print_term with print_type0
+
+T0Mlam(testlam; T0Pbas(testlam_type); T0Mtup(T0Mint(0), T0Mint(1), T0Mint(2), T0Mint(3), T0Mint(4), ))
+Tester1, type0_equal T0Pint * 2, expected true: true
+Tester2, type0_equal btf vs int, expected false: false
+Tester5, type0_equal fun(int->int) * 2, expected true: true
+Tester6, type0_equal different fun, expected false: false
+Tester9, type0_equal identical tuple, expected true: true
+Tester10, type0_equal different tuple, expected false: false
+Tester12, term_teval of tuple int::int::bool::nil: T0Ptup(T0Pbas(int), T0Pbas(int), T0Pbas(bool), )
+Tester13, term_teval of sel index=2 of tuple int::int::bool::nil: T0Pbas(bool)
+Test on teval1, expected result is T0Pbas(int): T0Pbas(int)
+
+[jiaruifu@csa2 MySolution]$ 

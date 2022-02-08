@@ -1,0 +1,36 @@
+TASK 1
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o lambda2_sol \
+-DATS_MEMALLOC_LIBC ./../lambda1.dats lambda2_sol.dats
+[jiaruifu@csa2 MySolution]$ ./lambda2_sol
+t1emp: T1Memp() T2emp after trans12: T2Memp()
+t1lam: T1Mlam(test2; T1Memp()) T2lam after trans12: T2Mlam(test2[1]; T2Memp())
+t1let: T1Mlet(test3; T1Memp(); T1Mlam(test2; T1Memp())) T2let after trans12: T2Mlet(test3[2]; T2Memp(); T2Mlam(test2[3]; T2Memp()))
+t1cons: T1Mcons(T1Memp(); T1Memp()) T2cons after trans12: T2Mcons(T2Memp(); T2Memp())
+t1refn: TMref_new(T1Mint(3)) T2refn after trans12: TMref_new(T2Mint(3))
+t1fix: T1Mfix(f; x; T1Mlam(test2; T1Memp())) T2fix after trans12: T2Mfix(f[4]; x[5]; T2Mlam(test2[6]; T2Memp()))
+[jiaruifu@csa2 MySolution]$ 
+
+TASK 2
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o lambda2_interp_sol \
+-DATS_MEMALLOC_LIBC ./../lambda1.dats lambda2_interp_sol.dats
+[jiaruifu@csa2 MySolution]$ ./lambda2_interp_sol 
+tadd23: T2Mopr(+; T2Mint(2); T2Mint(3)
+tadd23: T2Mopr(+; T2Mint(2); T2Mint(3) tadd23 after interp0: T2Vint(5)
+ref_add23: TMref_new(T2Mopr(+; T2Mint(2); T2Mint(3)) ref_add23 after interp0: T2Vref(T2Vint(5))
+get_ref: TMref_get(TMref_new(T2Mopr(+; T2Mint(2); T2Mint(3))) get_ref after interp0: T2Vint(5)
+[jiaruifu@csa2 MySolution]$ 
+
+TASK 3
+[jiaruifu@csa2 MySolution]$ make
+\
+patscc -o lambda2_tinfer_sol \
+-DATS_MEMALLOC_LIBC ./../lambda1.dats lambda2_tinfer_sol.dats
+[jiaruifu@csa2 MySolution]$ ./lambda2_tinfer_sol 
+tadd23: T2Mopr(+; T2Mint(2); T2Mint(3) tadd23 after tinfer0: T1Pbas(int)
+ref_add23: TMref_new(T2Mopr(+; T2Mint(2); T2Mint(3)) ref_add23 after tinfer0: T1Pref(T1Pbas(int))
+get_ref: TMref_get(TMref_new(T2Mopr(+; T2Mint(2); T2Mint(3))) get_ref after tinfer0: T1Pbas(int)
+[jiaruifu@csa2 MySolution]$ 
